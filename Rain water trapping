@@ -1,0 +1,40 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        for(int i=0;i<t;i++)
+        {
+            int n=sc.nextInt();
+            int []A=new int[n];
+            for(int j=0;j<n;j++)
+            {
+                A[j]=sc.nextInt();
+            }
+        int c=rainwater(A);
+        System.out.println(c);
+        }
+    }
+    public static int rainwater(int []A)
+    {
+        int [] left=new int[A.length];
+        left[0]=A[0];
+        for(int i=1;i<left.length;i++)
+        {
+            left[i]=Math.max(left[i-1],A[i]);
+        }
+        int [] right=new int [A.length];
+        right[A.length-1]=A[A.length-1];
+        for(int i=A.length-2;i>=0;i--)
+        {
+            right[i]=Math.max(right[i+1],A[i]);
+        }
+        int sum=0;
+        for(int i=0;i<A.length;i++)
+        {
+            left[i]=Math.min(left[i],right[i])-A[i];
+            sum=sum+left[i];
+        }
+        return sum;
+    }
+}
