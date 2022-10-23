@@ -1,0 +1,28 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc=new Scanner(System.in);
+			int n=sc.nextInt();
+            int f=0;
+            int s=0;
+			int [] A=new int [n];
+			for(int i=0;i<n;i++)
+			{
+				A[i]=sc.nextInt();
+			}
+		int t=sc.nextInt();
+        for(int i=0;i<n;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(A[i]+A[j]==t)
+                {
+                    f=Math.min(A[i],A[j]);
+                    s=Math.max(A[i],A[j]);
+                    System.out.println(f+" and "+s);
+                }
+            }
+        }
+        
+    }
+}
